@@ -1,0 +1,17 @@
+<form>
+  <div class="form-group">
+    <label for="">Enter {{filter.name}}</label>
+    <input type="{{filter.data_type}}" class="form-control" name="box"
+    [(ngModel)]="input_value" #box="ngModel">
+  </div>
+  {{box.errors}}
+  <div *ngIf="filters_length > filter.id + 1">
+    <button type="button" name="skip" (click)="onClickSkip()">Skip</button>
+    <button type="submit" name="submit" (click)="onClickSubmit(input_value)">Add Filter</button>
+  </div>
+
+  <div *ngIf="filters_length == filter.id + 1">
+    <button type="submit" name="submit" (click)="onClickSearch()">Search</button>
+  </div>
+
+</form>

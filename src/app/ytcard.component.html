@@ -1,0 +1,26 @@
+<div *ngFor="let ytcard of ytcards">
+  <div>
+    Creator name: {{ytcard.creator_name}}
+  </div>
+
+  <div >
+    video: {{ytcard.top_video_url}}
+  </div>
+
+  <div>
+    pic: {{ytcard.profile_pic_url}}
+  </div>
+
+  <div>
+    channel: {{ytcard.channel_description}}
+  </div>
+
+  <div>
+    subscribers: {{ytcard.subscribers_count}}
+  </div>
+
+  <div>
+    views: {{ytcard.views_count}}
+  </div>
+  <br><br>
+</div>
