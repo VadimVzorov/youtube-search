@@ -24,21 +24,85 @@ export class YtcardComponent implements OnInit {
   ) { }
 
   ngOnInit(): any {
-    let params =new HttpParams();
-    params.set('key', 'AIzaSyBaqkklGh0TEBNzhRO6CemxPJA7DWChZdA');
-    params.set('part', 'snippet');
-    params.set('order', 'rating');
-    params.set('q', 'surf');
-    params.set('type', 'channel');
-    params.set('maxResults', '50');
-    console.log(params.toString())
-    console.log(params.get('key'))
+    //make http request to get general channel data
+    let params = new HttpParams()
+                  .set('key', 'AIzaSyBaqkklGh0TEBNzhRO6CemxPJA7DWChZdA')
+                  .set('part', 'snippet')
+                  .set('order', 'viewCount')
+                  .set('q', 'surf')
+                  .set('type', 'channel')
+                  .set('maxResults', '50');
+
     let response = this.http.get(
-      'https://www.googleapis.com/youtube/v3/search?',{
+      'https://www.googleapis.com/youtube/v3/search',{
         params: params
       }
     );
+    response.subscribe(data => console.log(data['items']))
     this.channels = this.ytcardService.getChannels(response);
-    this.channels.subscribe(data => console.log(data));
+    this.channels.subscribe(data => {
+
+      this.ytcards = data;
+      console.log(data)
+      let stat_params = new HttpParams()
+                          .set('key', 'AIzaSyBaqkklGh0TEBNzhRO6CemxPJA7DWChZdA')
+                          .set('part', 'statistics')
+                          .set('id', this.ytcardService.getChannelsIDs(data));
+
+      let response_stat = this.http.get(
+        'https://www.googleapis.com/youtube/v3/channels',{
+          params: stat_params
+        }
+      );
+
+      //get videos for channels
+
+      let video_params = new HttpParams()
+                          .set('key', 'AIzaSyBaqkklGh0TEBNzhRO6CemxPJA7DWChZdA')
+                          .set('part', 'snippet')
+                          .set('id', this.ytcardService.getChannelsIDs(data))
+                          .set('maxResults', '50');
+
+      let response_video = this.http.get(
+        'https://www.googleapis.com/youtube/v3/search',{
+          params: video_params
+        }
+      )
+
+      this.ytcardService.getChannelVideo(response_video)
+        .subscribe(channel_video => {
+          let ytcards_copy = data; ///DELETE LATER
+          this.ytcards = this.ytcardService.mergeChannelData(channel_video, this.ytcards, 'video');
+        })
+
+
+
+      //get channel statistics and merge it with ytcards
+
+      this.ytcardService.getChannelStats(response_stat)
+        .subscribe(channel_stats => {
+          let ytcards_copy = data; ///DELETE LATER
+          ////THIS DOESN'T WORK!!!!!
+          // channel_stats.map(
+          //   card_stats => {
+          //     let id = card_stats.channel_id;
+          //     let card = ytcards_copy.find(ytcard => ytcard.channel_id = id);
+          //     let card_index = ytcards_copy.indexOf(card);
+          //     card.subscribers_count = card_stats.subscribers_count;
+          //     card.views_count = card_stats.views_count;
+          //     card.video_count = card_stats.video_count;
+          //     return card
+          //   }
+          // ).subscribe(data => console.log(data))
+          this.ytcards = this.ytcardService.mergeChannelData(channel_stats, this.ytcards, 'stats');
+        });
+
+
+
+
+    });
+
+
+
   }
 }

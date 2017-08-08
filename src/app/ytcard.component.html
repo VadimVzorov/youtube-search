@@ -1,10 +1,14 @@
 <div *ngFor="let ytcard of ytcards">
   <div>
-    Creator name: {{ytcard.creator_name}}
+    Channel name: {{ytcard.channel_name}}
   </div>
 
   <div >
-    video: {{ytcard.top_video_url}}
+    Video Title: {{ytcard.video_title}}
+  </div>
+
+  <div >
+    Video URL: https://www.youtube.com/watch?v={{ytcard.video_url}}
   </div>
 
   <div>

@@ -6,5 +6,8 @@ export class Ytcard {
   channel_description: string;
   subscribers_count: number;
   views_count: number;
+  video_count: number;
+  video_url: string;
+  video_title: string;
 
 }
