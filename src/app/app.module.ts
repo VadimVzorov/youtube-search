@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { FiltersComponent } from './filters.component';
 import { StepComponent } from './step.component';
 import { YtcardComponent } from './ytcard.component';
+import { YtwatchComponent } from './ytwatch.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FiltersComponent,
     StepComponent,
-    YtcardComponent
+    YtcardComponent,
+    YtwatchComponent
   ],
   imports: [
     BrowserModule,

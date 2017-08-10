@@ -3,13 +3,13 @@
     Channel name: {{ytcard.channel_name}}
   </div>
 
-  <div >
+  <!-- <div >
     Video Title: {{ytcard.video_title}}
   </div>
 
   <div >
     Video URL: https://www.youtube.com/watch?v={{ytcard.video_url}}
-  </div>
+  </div> -->
 
   <div>
     pic: {{ytcard.profile_pic_url}}
@@ -26,5 +26,10 @@
   <div>
     views: {{ytcard.views_count}}
   </div>
+
+  <button type="button" name="button" (click)="onClickWatch(ytcard.channel_id)">Watch Video</button>
+
+  <ytwatch [videoInfo]="videoInfo"></ytwatch>
+
   <br><br>
 </div>
