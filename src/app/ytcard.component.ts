@@ -25,8 +25,8 @@ export class YtcardComponent implements OnInit {
   ) { }
 
   ngOnInit(): any {
-    //make http request to get general channel data
-    let params = new HttpParams()
+    // make http request to get general channel data
+    const params = new HttpParams()
       .set('key', 'AIzaSyBaqkklGh0TEBNzhRO6CemxPJA7DWChZdA')
       .set('part', 'snippet')
       .set('order', 'viewCount')
