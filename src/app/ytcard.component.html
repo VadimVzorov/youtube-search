@@ -27,9 +27,7 @@
     views: {{ytcard.views_count}}
   </div>
 
-  <button type="button" name="button" (click)="onClickWatch(ytcard.channel_id)">Watch Video</button>
-
-  <ytwatch [videoInfo]="videoInfo"></ytwatch>
+  <ytwatch [channel_id]="ytcard.channel_id"></ytwatch>
 
   <br><br>
 </div>

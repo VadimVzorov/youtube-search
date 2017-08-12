@@ -16,7 +16,7 @@ export class YtcardComponent implements OnInit {
 
   ytcards: Ytcard[];
   channels: Observable<Ytcard[]>;
-  videoInfo: object;
+  channel_id: string;
 
 
   constructor(
@@ -39,7 +39,6 @@ export class YtcardComponent implements OnInit {
         params: params
       }
     );
-    response.subscribe(data => console.log(data['items']));
     this.channels = this.ytcardService.getChannels(response);
     this.channels.subscribe(data => {
 
@@ -100,25 +99,4 @@ export class YtcardComponent implements OnInit {
         });
     });
   }
-
-  onClickWatch(channel_id): void {
-    console.log(channel_id)
-    let video_params = new HttpParams()
-      .set('key', 'AIzaSyBaqkklGh0TEBNzhRO6CemxPJA7DWChZdA')
-      .set('part', 'snippet')
-      .set('channelId', channel_id)
-      .set('maxResults', '1')
-      .set('order', 'viewCount')
-      .set('type', 'video');
-
-    let video_response = this.http.get(
-      'https://www.googleapis.com/youtube/v3/search', {
-        params: video_params
-      }
-    )
-
-    this.ytcardService.getVideoInfo(video_response).subscribe(videoInfo => this.videoInfo = videoInfo);
-
-  }
-
 }
