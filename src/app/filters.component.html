@@ -1,21 +1,43 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <form>
-        <div class="form-group">
-          <label for="">Enter {{filter.name}}</label>
-          <input type="{{filter.data_type}}" class="form-control" name="box" [(ngModel)]="input_value" #box="ngModel">
-        </div>
-        {{box.errors}}
-        <div *ngIf="filters_length > filter.id + 1">
-          <button type="button" name="skip" (click)="onClickSkip()">Skip</button>
-          <button type="button" name="submit" (click)="onClickSubmit(input_value)">Add Filter</button>
+  <div class="row align-items-center find-row">
+    <div class="col-4 line"></div>
+    <div class="col-6">
+      <h1 class="find-title">
+        Find YouTube Creators
+      </h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  
+    
+  <form>
+    <div class="form-group row justify-content-center filter-row">
+      <div class="col-5">
+        <h2 class="filter-title"><label>Enter {{filter.name}}</label></h2>
+      </div>
+      <div class="col-7 search-box">
+        <input type="{{filter.data_type}}" class="form-control search" name="box" [(ngModel)]="input_value" #box="ngModel">
+
+        <div *ngIf="filters_length > filter.id + 1" class="row search-buttons">
+            <div class="skip-button col-3">
+              <button type="button" name="skip" (click)="onClickSkip()">Skip</button>
+            </div>
+            <div class="filter-button col">
+              <button type="button" name="submit" (click)="onClickSubmit(input_value)">Add Filter</button>
+              <div class="filter-line"></div>
+            </div>
         </div>
 
         <div *ngIf="filters_length == filter.id + 1">
           <button type="button" name="submit" (click)="onClickSearch(input_value)">Search</button>
         </div>
-      </form>
+
+
+      </div>
     </div>
-  </div>
+    {{box.errors}}
+    
+  </form>
+
 </div>
