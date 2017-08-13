@@ -1,4 +1,6 @@
-<div *ngFor="let ytcard of ytcards">
+<input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
+<div *ngIf="searchBox.value">Searching for {{searchBox.value}}</div>
+<div *ngFor="let ytcard of ytcards_display">
   <div>
     Channel name: {{ytcard.channel_name}}
   </div>
@@ -31,3 +33,6 @@
 
   <br><br>
 </div>
+
+
+

@@ -17,7 +17,8 @@ import { YtwatchComponent } from './ytwatch.component';
     FiltersComponent,
     StepComponent,
     YtcardComponent,
-    YtwatchComponent
+    YtwatchComponent,
+    YtcardComponent
   ],
   imports: [
     BrowserModule,

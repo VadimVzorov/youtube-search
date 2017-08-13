@@ -60,7 +60,9 @@ export class FiltersComponent implements OnInit {
     console.log(this.filters);
   }
 
-  onClickSearch(): void {
+  onClickSearch(input_value): void {
+    let index = this.filter.id;
+    this.filters[index].answer = input_value;
     let link = ['/searchresults'];
     this.router.navigate(link);
   }

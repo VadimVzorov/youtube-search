@@ -13,7 +13,9 @@ export class YtcardService {
 
   getChannels(response): any {
     return response.map(
-      data => data['items'].map(
+      data => {
+        console.log(data)
+        return data['items'].map(
         item => {
           const card = {
             channel_id: item.snippet.channelId,
@@ -24,8 +26,16 @@ export class YtcardService {
             // video_title: item.snippet.title
           };
           return card;
-        }
-      )
+        });
+      }
+    );
+  }
+
+  getNextPageToken(response): any {
+    return response.map(
+      data => {
+        return data['nextPageToken'];
+      }
     );
   }
 
@@ -65,8 +75,6 @@ export class YtcardService {
   }
 
   mergeChannelData(channel_data, ytcards, type): any {
-
-
     return ytcards.map(
       card => {
         const id = card.channel_id;
@@ -81,6 +89,24 @@ export class YtcardService {
         return card;
       }
     );
+  }
+
+  applyFilter(filter, ytcards_storage): any {
+    return ytcards_storage
+      .filter(card => card.channel_name.toLowerCase().includes(filter))
+  }
+
+  filterSubscribersCount(ytcards_storage, min_subscribers, max_subscribers): any {
+    const results = ytcards_storage.filter(
+      card => {
+        const x = parseInt(card.subscribers_count, 10);
+        const y = parseInt(card.views_count, 10);
+        if (x > min_subscribers && x < max_subscribers && y > 0) {
+          return true;
+        }
+      }
+    );
+    return results;
   }
 
 }
