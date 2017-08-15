@@ -49,6 +49,7 @@ export class YtwatchComponent {
         this.videoInfo = videoInfo;
         this.url = this.sanitizer
           .bypassSecurityTrustResourceUrl(this.baseUrl + this.videoInfo[0].video_url);
+        console.log(this.url);
       });
 
   }

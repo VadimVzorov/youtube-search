@@ -6,8 +6,8 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <div class="iframe">
-          <iframe  [src]="url">
+        <div class="iframe" *ngIf="videoInfo">
+          <iframe width="420" height="315" [src]="url">
           </iframe>
         </div>
       </div>
@@ -16,3 +16,10 @@
 </div>
 
 
+<!-- <button type="button" name="button" (click)="onClickWatch(channel_id)" *ngIf="!videoInfo">Watch Video</button>
+
+<div class="iframe" *ngIf="videoInfo">
+
+  <iframe width="420" height="315" [src]="url">
+  </iframe>
+</div> -->
