@@ -1,38 +1,44 @@
-<input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
-<div *ngIf="searchBox.value">Searching for {{searchBox.value}}</div>
-<div *ngFor="let ytcard of ytcards_display">
-  <div>
-    Channel name: {{ytcard.channel_name}}
+<div class="container-fluid">
+  <div class="row results-row align-items-center">
+    <div class="col-4 line"></div>
+    <div class="col-8 title">
+      Your search results
+    </div>
   </div>
-
-  <!-- <div >
-    Video Title: {{ytcard.video_title}}
-  </div>
-
-  <div >
-    Video URL: https://www.youtube.com/watch?v={{ytcard.video_url}}
-  </div> -->
-
-  <div>
-    pic: {{ytcard.profile_pic_url}}
-  </div>
-
-  <div>
-    channel: {{ytcard.channel_description}}
-  </div>
-
-  <div>
-    subscribers: {{ytcard.subscribers_count}}
-  </div>
-
-  <div>
-    views: {{ytcard.views_count}}
-  </div>
-
-  <ytwatch [channel_id]="ytcard.channel_id"></ytwatch>
-
-  <br><br>
 </div>
 
 
+<div class="container">
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <div *ngIf="searchBox.value">Searching for {{searchBox.value}}</div>
+  <div class="row">
+    <div *ngFor="let ytcard of ytcards_display" class="col-12 col-lg-4 ytcard">
 
+      <div class="media">
+        <img src="{{ytcard.profile_pic_url}}" class="rounded-circle icon">
+        <div class="media-body">
+          <h4 class="chan-title">
+            {{ytcard.channel_name}}
+          </h4>
+          <p class="chan-desc">
+            {{ytcard.channel_description}}
+          </p>
+          <div class="row">
+
+            <div class="col-6">
+              <b>Subscribers: </b>{{ytcard.subscribers_count}}<br>
+              <b>Views: </b>{{ytcard.views_count}}
+            </div>
+
+            <div class="col">
+              <ytwatch [channel_id]="ytcard.channel_id"></ytwatch>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- 
+| slice:1:10 -->
+    </div>
+  </div>
+ 

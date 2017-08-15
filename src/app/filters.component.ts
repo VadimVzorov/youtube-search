@@ -10,7 +10,8 @@ import { YtcardService } from './ytcard.service';
 @Component({
   selector: 'filters',
   templateUrl: './filters.component.html',
-  providers: [FilterService, StepService, YtcardService]
+  providers: [FilterService, StepService, YtcardService],
+  styleUrls: ['./filters.component.css'],
 })
 export class FiltersComponent implements OnInit {
   filters: Filter[];
@@ -18,6 +19,7 @@ export class FiltersComponent implements OnInit {
   filters_length: number;
   status: boolean;
   input_value: '123';
+  error: string;
 
   constructor(
     private filterService: FilterService,
@@ -43,6 +45,7 @@ export class FiltersComponent implements OnInit {
   }
 
   onClickSkip(): void {
+    this.error = '';
     let current_step = this.filter.id + 1;
     this.filter = this.filters[current_step];
     //var indicating current step in filters selection
@@ -51,13 +54,18 @@ export class FiltersComponent implements OnInit {
   }
 
   onClickSubmit(input_value): void {
-    let index = this.filter.id;
-    this.filters[index].answer = input_value;
-    let current_step = this.filter.id + 1;
-    this.filter = this.filters[current_step];
-    this.input_value = null;
-    this.checkStep();
-    console.log(this.filters);
+    if (!input_value) {
+      this.error = 'Please fill in';
+    } else {
+      this.error = '';
+      let index = this.filter.id;
+      this.filters[index].answer = input_value;
+      let current_step = this.filter.id + 1;
+      this.filter = this.filters[current_step];
+      this.input_value = null;
+      this.checkStep();
+      console.log(this.filters);
+    }
   }
 
   onClickSearch(input_value): void {

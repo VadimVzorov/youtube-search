@@ -96,17 +96,58 @@ export class YtcardService {
       .filter(card => card.channel_name.toLowerCase().includes(filter))
   }
 
-  filterSubscribersCount(ytcards_storage, min_subscribers, max_subscribers): any {
-    const results = ytcards_storage.filter(
-      card => {
-        const x = parseInt(card.subscribers_count, 10);
-        const y = parseInt(card.views_count, 10);
-        if (x > min_subscribers && x < max_subscribers && y > 0) {
-          return true;
-        }
-      }
+  applySort(ytcards): any {
+    return ytcards.sort(
+      (a, b) => a.subscribers_count - b.subscribers_count
     );
-    return results;
+  }
+
+  filterSubscribersCount(ytcards_storage, min_subscribers, max_subscribers): any {
+    if (min_subscribers && max_subscribers) {
+      const results = ytcards_storage.filter(
+        card => {
+          const x = parseInt(card.subscribers_count, 10);
+          const y = parseInt(card.views_count, 10);
+          if (x > min_subscribers && x < max_subscribers && y > 0) {
+            return true;
+          }
+        }
+      );
+      return results;
+    } else if (min_subscribers) {
+      const results = ytcards_storage.filter(
+        card => {
+          const x = parseInt(card.subscribers_count, 10);
+          const y = parseInt(card.views_count, 10);
+          if (x > min_subscribers && y > 0) {
+            return true;
+          }
+        }
+      );
+      return results;
+    } else if (max_subscribers) {
+      const results = ytcards_storage.filter(
+        card => {
+          const x = parseInt(card.subscribers_count, 10);
+          const y = parseInt(card.views_count, 10);
+          if (x < max_subscribers && y > 0) {
+            return true;
+          }
+        }
+      );
+      return results;
+    } else {
+      const results = ytcards_storage.filter(
+        card => {
+          const x = parseInt(card.subscribers_count, 10);
+          const y = parseInt(card.views_count, 10);
+          if (y > 0) {
+            return true;
+          }
+        }
+      );
+      return results;
+    }
   }
 
 }

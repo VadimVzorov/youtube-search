@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row align-items-center find-row">
     <div class="col-4 line"></div>
     <div class="col-6">
@@ -10,27 +10,28 @@
 </div>
 <div class="container">
   
-    
   <form>
     <div class="form-group row justify-content-center filter-row">
       <div class="col-5">
         <h2 class="filter-title"><label>Enter {{filter.name}}</label></h2>
       </div>
-      <div class="col-7 search-box">
+      <div class="col-7">
+        <div class="error" *ngIf="error">
+          {{error}}
+        </div>
         <input type="{{filter.data_type}}" class="form-control search" name="box" [(ngModel)]="input_value" #box="ngModel">
 
         <div *ngIf="filters_length > filter.id + 1" class="row search-buttons">
-            <div class="skip-button col-3">
-              <button type="button" name="skip" (click)="onClickSkip()">Skip</button>
+            <div class="col-3">
+              <button class="skip button" type="button" name="skip" (click)="onClickSkip()">Skip</button>
             </div>
-            <div class="filter-button col">
-              <button type="button" name="submit" (click)="onClickSubmit(input_value)">Add Filter</button>
-              <div class="filter-line"></div>
+            <div class="col-8">
+              <button class="filter button" type="button" name="submit" (click)="onClickSubmit(input_value)">Add Filter</button>
             </div>
         </div>
 
         <div *ngIf="filters_length == filter.id + 1">
-          <button type="button" name="submit" (click)="onClickSearch(input_value)">Search</button>
+          <button class="filter button" type="button" name="submit" (click)="onClickSearch(input_value)">Search</button>
         </div>
 
 
@@ -39,5 +40,5 @@
     {{box.errors}}
     
   </form>
-
+<step></step>
 </div>

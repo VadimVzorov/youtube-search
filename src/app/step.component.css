@@ -1,0 +1,14 @@
+.num {
+    text-align: center;
+    margin-top: 12rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+}
+
+.step {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    margin-top: -1rem;
+    color: #8c8c8c;
+}

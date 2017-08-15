@@ -1,7 +1,18 @@
-<button type="button" name="button" (click)="onClickWatch(channel_id)" *ngIf="!videoInfo">Watch Video</button>
+<button type="button" name="button" (click)="onClickWatch(channel_id)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Watch Video
+</button>
 
-<div class="iframe" *ngIf="videoInfo">
-
-  <iframe width="420" height="315" [src]="url">
-  </iframe>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="iframe">
+          <iframe  [src]="url">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+

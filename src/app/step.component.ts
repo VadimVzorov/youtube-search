@@ -5,7 +5,8 @@ import { StepService } from './step.service';
 
 @Component({
   selector: 'step',
-  template: '<div>Step {{step_data.current_step}}/{{step_data.steps_count}}</div>{{num}}',
+  templateUrl: './step.component.html',
+  styleUrls: ['./step.component.css'],
   providers: [StepService]
 })
 export class StepComponent implements OnInit {

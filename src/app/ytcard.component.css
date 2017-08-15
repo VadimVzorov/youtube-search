@@ -1,0 +1,45 @@
+.line {
+  background-color: #D50F0F;
+  height: 7px;
+}
+
+.results-row {
+  background: linear-gradient(rgba(85, 43, 16, 0.50), rgba(0, 4, 4, 0.5)), url('./assets/tv.jpg');
+  background-size: 150%;
+  height: 25rem;
+  background-position-y: -12rem;
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 4.5rem;
+  color: white;
+  line-height: 5rem;
+}
+
+.stats {
+    float: left;
+}
+
+.icon {
+    margin-right: 1.3rem;
+}
+
+.chan-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+}
+
+.chan-desc {
+    font-family: 'Archivo', sans-serif;
+    margin-bottom: 0.9rem;
+}
+
+.ytcard {
+    margin-bottom: 3rem;
+}
+
+.modal-body {
+    height: 100%;
+    width: 100%;
+}

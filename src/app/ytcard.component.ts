@@ -13,6 +13,7 @@ import { FILTERS } from './filter-data';
 @Component({
   selector: 'ytcard',
   templateUrl: './ytcard.component.html',
+  styleUrls: ['./ytcard.component.css'],
   providers: [YtcardService]
 })
 export class YtcardComponent implements OnInit {
@@ -106,6 +107,7 @@ export class YtcardComponent implements OnInit {
           .applyFilter(data, this.ytcards)
       );
     this.getChannels('');
+    // ADD IF TO CHECK FOR FILTERS
     this.ytcards_observable
       .map(data => data)
       .subscribe(data => {
