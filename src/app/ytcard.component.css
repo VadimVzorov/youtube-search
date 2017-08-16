@@ -4,17 +4,18 @@
 }
 
 .results-row {
-  background: linear-gradient(rgba(85, 43, 16, 0.50), rgba(0, 4, 4, 0.5)), url('./assets/tv.jpg');
-  background-size: 150%;
-  height: 25rem;
-  background-position-y: -12rem;
+  background: linear-gradient(rgba(85, 43, 16, 0.50), rgba(0, 4, 4, 0.5)),
+  url('./assets/tv.jpg');
+  background-size: 120%;
+  height: 17rem;
+  background-position-y: -1rem;
 }
 
 .title {
   font-family: 'Oswald', sans-serif;
-  font-size: 4.5rem;
+  font-size: 3.8rem;
   color: white;
-  line-height: 5rem;
+  line-height: 3.5rem;
 }
 
 .stats {
@@ -42,4 +43,9 @@
 .modal-body {
     height: 100%;
     width: 100%;
+}
+
+.watch-btn {
+    background-color: #D50F0F;
+
 }

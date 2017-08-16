@@ -7,23 +7,24 @@
 .find-row {
     background: linear-gradient(rgba(85, 43, 16, 0.50),rgba(0, 4, 4, 0.5)), url('./assets/cover.jpg');
     background-size: 150%;
-    height: 25rem;
-    background-position-y: -12rem;
+    height: 17rem;
+    background-position-y: -5rem;
 }
 
 .find-title {
     font-family: 'Oswald', sans-serif;
-    font-size: 4.5rem;
+    font-size: 3.8rem;
     color: white;
+    line-height: 3.5rem;
 }
 
 .filter-title {
     font-family: 'Archivo', sans-serif;
-    font-size: 2.5rem;
+    font-size: 1.6rem;
 }
 
 .filter-row {
-    margin-top: 6rem;
+    margin-top: 4rem;
 }
 
 .search-box {
@@ -31,7 +32,7 @@
 }
 
 .search {
-    height: 4.4rem;
+    height: 3rem;
     border-color: #212529;
     border-radius: 0;
     font-size: 2rem;
@@ -44,21 +45,24 @@
 
 .skip {
     color: rgb(140, 140, 140);
+}
 
+.col-3 {
+    padding-left: 0rem;
 }
 
 .button {
     background: none;
     border: none;
     font-family: 'Oswald', sans-serif;
-    font-size: 2rem;
-    height: 4rem;
+    font-size: 1.6rem;
+    height: 3rem;
     padding:0;
 }
 
 .filter {
     border-bottom: solid 3px #D50F0F;
-    width: 12.3rem;
+    width: 7.6rem;
     text-align: left;
 }
 

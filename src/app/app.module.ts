@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { BootstrapModalModule } from 'ng2-bootstrap-modal';
+
 import { AppComponent } from './app.component';
 import { FiltersComponent } from './filters.component';
 import { StepComponent } from './step.component';
@@ -25,6 +27,7 @@ import { YtwatchComponent } from './ytwatch.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BootstrapModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

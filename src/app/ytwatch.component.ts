@@ -3,11 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { HttpParams } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DialogComponent, DialogService } from 'ng2-bootstrap-modal';
 
 import 'rxjs/Rx';
 
 import { Ytcard } from './ytcard';
 import { YtwatchService } from './ytwatch.service';
+
+export interface ConfirmModel {
+  title: string;
+  message: string;
+}
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -15,7 +21,9 @@ import { YtwatchService } from './ytwatch.service';
   templateUrl: './ytwatch.component.html',
   providers: [YtwatchService]
 })
-export class YtwatchComponent {
+export class YtwatchComponent extends DialogComponent<ConfirmModel, boolean> implements ConfirmModel {
+  title: string;
+  message: string;
 
   @Input() channel_id: string;
   videoInfo: object;
@@ -26,8 +34,11 @@ export class YtwatchComponent {
   constructor(
     private ytwatchService: YtwatchService,
     private http: HttpClient,
-    private sanitizer: DomSanitizer
-  ) {}
+    private sanitizer: DomSanitizer,
+    dialogService: DialogService
+  ) {
+    super(dialogService);
+  }
 
   onClickWatch(channel_id): void {
     const video_params = new HttpParams()
