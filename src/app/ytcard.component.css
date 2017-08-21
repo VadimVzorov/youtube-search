@@ -1,51 +1,81 @@
 .line {
-  background-color: #D50F0F;
-  height: 7px;
+    background-color: #D50F0F;
+    height: 7px;
 }
 
 .results-row {
-  background: linear-gradient(rgba(85, 43, 16, 0.50), rgba(0, 4, 4, 0.5)),
-  url('./assets/tv.jpg');
-  background-size: 120%;
-  height: 17rem;
-  background-position-y: -1rem;
+    background: linear-gradient(rgba(85, 43, 16, 0.50),rgba(0, 4, 4, 0.5)), url('./assets/tv.jpg');
+    background-size: 150%;
+    height: 17rem;
+    background-position-y: -5rem;
+}
+
+.search-box {
+    margin: 1rem;
+    border-color: grey;
+    height: 2rem;
+    font-style: inherit;
+    font-size: 1rem;
+}
+
+.back-button {
+    background-color:  #D50F0F;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0;
+    margin-top: 1rem;
+    height: 2rem;
 }
 
 .title {
-  font-family: 'Oswald', sans-serif;
-  font-size: 3.8rem;
-  color: white;
-  line-height: 3.5rem;
-}
-
-.stats {
-    float: left;
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.8rem;
+    color: white;
+    line-height: 3.5rem;
 }
 
 .icon {
-    margin-right: 1.3rem;
+    margin-right: 1rem;
 }
 
 .chan-title {
     font-family: 'Oswald', sans-serif;
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 .chan-desc {
     font-family: 'Archivo', sans-serif;
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
 }
+
+.stats {
+    float: left;
+    font-size: 0.6rem;
+    margin-bottom: 0.2rem;
+    padding-right: 0;
+}
+
 
 .ytcard {
-    margin-bottom: 3rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.modal-body {
-    height: 100%;
-    width: 100%;
+.button-watch {
+    padding-left: 0;
 }
 
-.watch-btn {
-    background-color: #D50F0F;
+.cards {
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+}
 
+
+@media (min-width: 992px) {
+    .ytcard {
+        max-width: 22rem;
+        margin-right: 1rem;
+    }
 }

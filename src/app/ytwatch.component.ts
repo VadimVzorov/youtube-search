@@ -9,6 +9,7 @@ import 'rxjs/Rx';
 
 import { Ytcard } from './ytcard';
 import { YtwatchService } from './ytwatch.service';
+import { PopupComponent } from './popup.component';
 
 export interface ConfirmModel {
   title: string;
@@ -19,9 +20,10 @@ export interface ConfirmModel {
   // tslint:disable-next-line:component-selector
   selector: 'ytwatch',
   templateUrl: './ytwatch.component.html',
+  styleUrls: ['./ytwatch.component.css'],
   providers: [YtwatchService]
 })
-export class YtwatchComponent extends DialogComponent<ConfirmModel, boolean> implements ConfirmModel {
+export class YtwatchComponent {
   title: string;
   message: string;
 
@@ -35,10 +37,9 @@ export class YtwatchComponent extends DialogComponent<ConfirmModel, boolean> imp
     private ytwatchService: YtwatchService,
     private http: HttpClient,
     private sanitizer: DomSanitizer,
-    dialogService: DialogService
-  ) {
-    super(dialogService);
-  }
+    private dialogService: DialogService
+  ) { }
+
 
   onClickWatch(channel_id): void {
     const video_params = new HttpParams()
@@ -54,14 +55,23 @@ export class YtwatchComponent extends DialogComponent<ConfirmModel, boolean> imp
         params: video_params
       }
     );
-
+    document.querySelector('body').style.overflow = "hidden";
     this.ytwatchService.getVideoInfo(video_response)
       .subscribe(videoInfo => {
         this.videoInfo = videoInfo;
         this.url = this.sanitizer
           .bypassSecurityTrustResourceUrl(this.baseUrl + this.videoInfo[0].video_url);
-        console.log(this.url);
-      });
+        const disposable = this.dialogService.addDialog(
+          PopupComponent,
+          {
+            url: this.url
+          }, {
+            closeByClickingOutside: true,
+            backdropColor: 'rgba(0, 0, 0, 0.54)'
+          }).subscribe( x => {
+            document.querySelector('body').style.overflow = "scroll";
+          })
+      })
 
   }
 

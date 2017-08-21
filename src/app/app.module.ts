@@ -12,6 +12,7 @@ import { FiltersComponent } from './filters.component';
 import { StepComponent } from './step.component';
 import { YtcardComponent } from './ytcard.component';
 import { YtwatchComponent } from './ytwatch.component';
+import { PopupComponent } from './popup.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { YtwatchComponent } from './ytwatch.component';
     StepComponent,
     YtcardComponent,
     YtwatchComponent,
-    YtcardComponent
+    PopupComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +29,9 @@ import { YtwatchComponent } from './ytwatch.component';
     AppRoutingModule,
     HttpClientModule,
     BootstrapModalModule
+  ],
+  entryComponents: [
+    PopupComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

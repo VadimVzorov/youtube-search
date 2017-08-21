@@ -1,44 +1,53 @@
-<div class="container-fluid">
-  <div class="row results-row align-items-center">
-    <div class="col-4 line"></div>
-    <div class="col-8 title">
-      Your search results
+  <div class="container-fluid">
+    <div class="row results-row align-items-center">
+      <div class="col-4 line"></div>
+      <div class="col-8 title">
+        Your search results
+      </div>
     </div>
   </div>
-</div>
 
 
-<div class="container">
-  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-  <div *ngIf="searchBox.value">Searching for {{searchBox.value}}</div>
-  <div class="row">
-    <div *ngFor="let ytcard of ytcards_display" class="col-12 col-lg-4 ytcard">
 
-      <div class="media">
-        <img src="{{ytcard.profile_pic_url}}" class="rounded-circle icon">
-        <div class="media-body">
-          <h4 class="chan-title">
-            {{ytcard.channel_name}}
-          </h4>
-          <p class="chan-desc">
-            {{ytcard.channel_description}}
-          </p>
-          <div class="row">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <button type="button" (click)="goBack()" class="back-button btn btn-primary">Go Back</button>
+      </div>
+      <div class="col">
+        <input class="search-box" #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="Search Channels"/>
+      </div>
+    </div>
+    <div *ngIf="searchBox.value">Searching for {{searchBox.value}}</div>
+    <div class="row cards">
+      <div *ngFor="let ytcard of ytcards_display" class="col-12 col-lg-4 ytcard">
 
-            <div class="col-6">
-              <b>Subscribers: </b>{{ytcard.subscribers_count}}<br>
-              <b>Views: </b>{{ytcard.views_count}}
+        <div class="media">
+          <img src="{{ytcard.profile_pic_url}}" class="rounded-circle icon">
+          <div class="media-body">
+            <h4 class="chan-title">
+              {{ytcard.channel_name}}
+            </h4>
+            <p class="chan-desc">
+              {{ytcard.channel_description}}
+            </p>
+            <div class="row align-items-center">
+
+              <div class="col-7 stats">
+                <b>Subscribers: </b>{{ytcard.subscribers_count}}<br>
+                <b>Views: </b>{{ytcard.views_count}}
+              </div>
+              <div class="col button-watch">
+                <ytwatch [channel_id]="ytcard.channel_id"></ytwatch>
+              </div>
+                
+
+
             </div>
-
-            <div class="col">
-              <ytwatch [channel_id]="ytcard.channel_id"></ytwatch>
-            </div>
-
           </div>
         </div>
-      </div>
-      <!-- 
+        <!-- 
 | slice:1:10 -->
+      </div>
     </div>
-  </div>
- 
+</div>

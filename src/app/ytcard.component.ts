@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -30,7 +31,8 @@ export class YtcardComponent implements OnInit {
 
   constructor(
     private ytcardService: YtcardService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   getChannels(pageToken): any {
@@ -129,5 +131,9 @@ export class YtcardComponent implements OnInit {
 
   addData(data): any {
     this.ytcards_observable.next(data);
+  }
+
+  goBack(): any {
+    this.router.navigate(['./']);
   }
 }
